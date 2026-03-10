@@ -3,6 +3,7 @@
 [![Lua][lua-src]][lua-href]
 [![Tests][tests-src]][tests-href]
 [![Zero deps][deps-src]][deps-href]
+![GitHub Repo Size](https://img.shields.io/github/repo-size/smit4k/luabadges?style=flat)
 
 Fast native Lua SVG badge generator.
 
