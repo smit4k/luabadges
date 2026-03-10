@@ -1,5 +1,5 @@
-local verdana_110 = require("calc_text_width")
-local colors = require("color_presets")
+local verdana_110 = require("luabadges.calc_text_width")
+local colors = require("luabadges.color_presets")
 
 local styles = { flat = true }
 

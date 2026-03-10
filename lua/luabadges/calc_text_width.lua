@@ -1,4 +1,4 @@
-local widths_verdana_110 = require("widths_verdana_110")
+local widths_verdana_110 = require("luabadges.widths_verdana_110")
 
 local function calc_width(text, char_width_table)
 	if not text then

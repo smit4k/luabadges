@@ -1,4 +1,6 @@
-local create_badge = require("badge_generator")
+package.path = "./lua/?.lua;./lua/?/init.lua;" .. package.path
+
+local create_badge = require("luabadges.badge_generator")
 
 local svg = create_badge({
 	status = "success",
