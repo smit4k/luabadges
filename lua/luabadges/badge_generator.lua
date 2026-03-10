@@ -41,7 +41,6 @@ local function create_badge(options)
 		icon = options.logo or options.icon,
 		iconWidth = options.iconWidth or 0,
 		wholeLink = options.whole_link,
-		scale = options.scale or 1,
 	}
 
 	if type(opts.status) ~= "string" then
