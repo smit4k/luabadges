@@ -33,6 +33,16 @@ run("renders shields-style svg structure", function()
 	assert_contains(svg, 'width="90"', "computed badge width")
 end)
 
+run("renders flat_square style with square corners", function()
+	local svg = badge({
+		label = "build",
+		status = "success",
+		color = "green",
+		style = "flat_square",
+	})
+	assert_contains(svg, '<rect width="90" height="20" rx="0"', "square clip path")
+end)
+
 run("supports whole_link wrapper", function()
 	local svg = badge({
 		label = "build",

@@ -1,7 +1,6 @@
 local verdana_110 = require("luabadges.calc_text_width")
 local colors = require("luabadges.color_presets")
-
-local styles = { flat = true }
+local templates = require("luabadges.badge_styles")
 
 local function xml_escape(value)
 	return tostring(value)
@@ -46,7 +45,7 @@ local function create_badge(options)
 	if type(opts.status) ~= "string" then
 		error("status must be a string")
 	end
-	if not styles[opts.style] then
+	if not templates[opts.style] then
 		error("invalid style: " .. tostring(opts.style))
 	end
 
@@ -103,30 +102,7 @@ local function create_badge(options)
 	local status_text = xml_escape(opts.status)
 
 	local svg = string.format(
-		[[
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="%d" height="20" role="img" aria-label="%s">
-  <linearGradient id="s" x2="0" y2="100%%">
-    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
-    <stop offset="1" stop-opacity=".1"/>
-  </linearGradient>
-  <clipPath id="r">
-    <rect width="%d" height="20" rx="3" fill="#fff"/>
-  </clipPath>
-  %s
-  <g clip-path="url(#r)">
-    <rect width="%d" height="20" fill="#%s"/>
-    <rect x="%d" width="%d" height="20" fill="#%s"/>
-    <rect width="%d" height="20" fill="url(#s)"/>%s
-  </g>
-  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" text-rendering="geometricPrecision" font-size="110">
-    <text aria-hidden="true" x="%d" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="%d">%s</text>
-    <text x="%d" y="140" transform="scale(.1)" textLength="%d">%s</text>
-    <text aria-hidden="true" x="%d" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="%d">%s</text>
-    <text x="%d" y="140" transform="scale(.1)" textLength="%d">%s</text>
-  </g>
-  %s
-</svg>
-]],
+		templates[opts.style],
 		total_width,
 		aria_label,
 		total_width,

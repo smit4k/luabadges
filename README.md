@@ -9,7 +9,6 @@ Fast native Lua SVG badge generator.
 
 - Zero runtime dependencies
 - Shields-style SVG output
-- LuaRocks-style module layout (`lua/luabadges`)
 
 ## Usage
 
@@ -25,7 +24,7 @@ local svg = create_badge({
   labelColor = "555",       -- <Color RGB> or preset name (default: "555")
   status = "passing",       -- <Text>, required
   color = "green",          -- <Color RGB> or preset name (default: "blue")
-  style = "flat",           -- currently supports: "flat"
+  style = "flat",           -- currently supports: "flat" and "flat_square"
   icon = nil,                -- data:image/... URI (default: nil)
   iconWidth = 14,            -- icon width in px (default: 14 when icon is set)
   whole_link = nil           -- wraps whole badge with link (default: nil)
@@ -83,7 +82,7 @@ Options:
 - `label` (string)
 - `color` (preset or hex)
 - `labelColor` (preset or hex)
-- `style` (`"flat"`)
+- `style` (`"flat"` or `"flat_square"`)
 - `icon` (data URI)
 - `iconWidth` (number)
 - `whole_link` (URL string)
