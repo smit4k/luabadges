@@ -1,5 +1,5 @@
 package = "luabadges"
-version = "0.2.0-1"
+version = "0.2.0-2"
 
 source = {
 	url = "git+https://github.com/smit4k/luabadges",
