@@ -30,9 +30,12 @@ local function section_width(text_width_tenths)
 end
 
 local function create_badge(options)
+	if type(options) ~= "table" then
+		error("options must be a table")
+	end
+
 	local opts = {
 		status = options.right_text or options.status or "",
-		subject = options.subject or "",
 		color = options.right_color or options.color or "blue",
 		label = options.left_text or options.label or "",
 		labelColor = options.left_color or options.labelColor or "555",
@@ -44,6 +47,9 @@ local function create_badge(options)
 
 	if type(opts.status) ~= "string" then
 		error("status must be a string")
+	end
+	if opts.status == "" then
+		error("status is required")
 	end
 	if not templates[opts.style] then
 		error("invalid style: " .. tostring(opts.style))
@@ -57,6 +63,9 @@ local function create_badge(options)
 
 	local icon_width = 0
 	if opts.icon then
+		if opts.iconWidth ~= 0 and type(opts.iconWidth) ~= "number" then
+			error("iconWidth must be a number")
+		end
 		icon_width = opts.iconWidth > 0 and opts.iconWidth or 14
 		label_text_width = label_text_width + (icon_width + 3) * 10
 	end
