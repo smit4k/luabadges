@@ -54,6 +54,16 @@ run("supports whole_link wrapper", function()
 	assert_contains(svg, '</a>', "whole link close")
 end)
 
+run("allows whole_link with arbitrary URI schemes", function()
+	local svg = badge({
+		label = "build",
+		status = "green",
+		color = "green",
+		whole_link = "javascript:alert(1)",
+	})
+	assert_contains(svg, '<a xlink:href="javascript:alert(1)">', "arbitrary-scheme whole_link")
+end)
+
 run("supports embedded logo image", function()
 	local image_data = "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAD0lEQVQI12P4zwAD/xkYAA/+Af8iHnLUAAAAAElFTkSuQmCC"
 	local svg = badge({
@@ -82,6 +92,29 @@ run("accepts hex colors and rejects invalid colors", function()
 	end)
 	if ok then
 		error("expected invalid color to throw")
+	end
+end)
+
+run("validates required and typed options", function()
+	local ok_nil, _ = pcall(function()
+		badge(nil)
+	end)
+	if ok_nil then
+		error("expected nil options to throw")
+	end
+
+	local ok_empty_status, _ = pcall(function()
+		badge({ label = "x", status = "", color = "green" })
+	end)
+	if ok_empty_status then
+		error("expected empty status to throw")
+	end
+
+	local ok_bad_icon_width, _ = pcall(function()
+		badge({ label = "x", status = "ok", color = "green", icon = "data:image/png;base64,a", iconWidth = "14" })
+	end)
+	if ok_bad_icon_width then
+		error("expected non-numeric iconWidth to throw")
 	end
 end)
 
