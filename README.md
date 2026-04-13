@@ -1,7 +1,6 @@
 # luabadges
 
 [![Lua][lua-src]][lua-href]
-[![Tests][tests-src]][tests-href]
 [![Zero deps][deps-src]][deps-href]
 ![GitHub Repo Size](https://img.shields.io/github/repo-size/smit4k/luabadges?style=flat)
 
@@ -89,7 +88,5 @@ Options:
 
 [lua-src]: https://img.shields.io/badge/lua-5.x-2C2D72.svg
 [lua-href]: https://www.lua.org/
-[tests-src]: https://img.shields.io/badge/tests-5%2F5%20passing-brightgreen.svg
-[tests-href]: ./tests/test_badge_generator.lua
 [deps-src]: https://img.shields.io/badge/dependencies-0-success.svg
 [deps-href]: ./lua/luabadges
